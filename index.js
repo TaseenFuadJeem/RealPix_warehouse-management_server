@@ -97,6 +97,18 @@ async function run() {
 
         });
 
+        app.delete('/my-items/:id', async (req, res) => {
+
+            const id = req.params.id;
+
+            const q = { _id: ObjectId(id) };
+
+            const result = await camCollection.deleteOne(q);
+
+            res.send(result);
+
+        })
+
     } finally {
 
     }
