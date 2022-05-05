@@ -23,7 +23,6 @@ async function run() {
         app.get('/cam', async (req, res) => {
 
             const qr = req.query;
-            console.log(qr);
 
             const cursor = camCollection.find(qr);
 
@@ -84,6 +83,19 @@ async function run() {
 
             res.send(result)
         })
+
+        app.get('/my-items', async (req, res) => {
+            const email = req.query.email;
+
+            const qr = { email: email };
+
+            const cursor = camCollection.find(qr);
+
+            const result = await cursor.toArray();
+
+            res.send(result);
+
+        });
 
     } finally {
 
