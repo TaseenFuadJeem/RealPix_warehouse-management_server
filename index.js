@@ -109,6 +109,28 @@ async function run() {
 
         })
 
+        app.put('/update-quantity/:id', async (req, res) => {
+
+            const id = req.params.id;
+
+            const data = req.body;
+
+            const filter = { _id: ObjectId(id) };
+
+            const options = { upsert: true };
+
+            const updatedDoc = {
+                $set: {
+                    qnt: data.qnt - 1
+                },
+
+            };
+
+            const result = await camCollection.updateOne(filter, updatedDoc, options);
+
+            res.send(result)
+        })
+
 
     } finally {
 
