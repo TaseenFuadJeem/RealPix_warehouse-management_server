@@ -121,7 +121,7 @@ async function run() {
 
             const updatedDoc = {
                 $set: {
-                    qnt: data.qnt - 1
+                    qnt: data.qnt
                 },
 
             };
